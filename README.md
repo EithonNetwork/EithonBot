@@ -1,0 +1,2 @@
+# EithonBot
+Discord bot
