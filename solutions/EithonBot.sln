@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discord", "..\Discord\Discord.csproj", "{05856C79-D0AD-43F3-A330-809B24A725FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "..\Main\Main.csproj", "{1B7A9858-E5A1-41BB-B728-3540F07B1C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandInterpreter", "..\CommandInterpreter\CommandInterpreter.csproj", "{EBF77B3F-01E3-4688-A8D7-9F7D37761062}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05856C79-D0AD-43F3-A330-809B24A725FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05856C79-D0AD-43F3-A330-809B24A725FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05856C79-D0AD-43F3-A330-809B24A725FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05856C79-D0AD-43F3-A330-809B24A725FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7A9858-E5A1-41BB-B728-3540F07B1C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7A9858-E5A1-41BB-B728-3540F07B1C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7A9858-E5A1-41BB-B728-3540F07B1C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7A9858-E5A1-41BB-B728-3540F07B1C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF77B3F-01E3-4688-A8D7-9F7D37761062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF77B3F-01E3-4688-A8D7-9F7D37761062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF77B3F-01E3-4688-A8D7-9F7D37761062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF77B3F-01E3-4688-A8D7-9F7D37761062}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

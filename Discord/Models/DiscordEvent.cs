@@ -1,0 +1,61 @@
+﻿using DSharpPlus;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Discord.Models
+{
+    internal class DiscordEvent
+    {
+        public DiscordGuild Guild { get; private set; }
+
+        public bool HasUser { get; private set; }
+        private DiscordUser _user;
+        public DiscordUser User
+        {
+            get
+            {
+                if (!HasUser) throw new ApplicationException("Illegal usage.");
+                return _user;
+            }
+            private set
+            {
+                _user = value;
+            }
+        }
+
+        
+        public bool HasMessage { get; private set; }
+        private DiscordMessage _message;
+        public DiscordMessage Message
+        {
+            get
+            {
+                if (!HasMessage) throw new ApplicationException("Illegal usage.");
+                return _message;
+            }
+            private set
+            {
+                _message = value;
+            }
+        }
+
+        public DiscordEvent(MessageCreateEventArgs e)
+        {
+            Guild = e.Guild;
+
+            HasMessage = true;
+            Message = e.Message;
+        }
+
+        public DiscordEvent(GuildMemberUpdateEventArgs e)
+        {
+            Guild = e.Guild;
+
+            HasUser = true;
+            User = e.User;
+        }
+    }
+}
