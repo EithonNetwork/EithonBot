@@ -1,4 +1,4 @@
-﻿using Discord.Models;
+﻿/*using Discord.Models;
 using DSharpPlus;
 using System;
 using System.Collections.Generic;
@@ -26,4 +26,4 @@ namespace Discord.Logic
 
         }
     }
-}
+}*/

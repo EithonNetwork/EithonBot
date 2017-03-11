@@ -3,9 +3,10 @@ using System;
 
 namespace Discord.Models
 {
-    internal class Role
+    public class Role
     {
         private DiscordRole _role;
+        public ulong ID { get { return _role.ID; } }
 
         public static Role GetRole(string roleString, object context)
         {
@@ -22,16 +23,17 @@ namespace Discord.Models
                 }
             }
             throw new ArgumentException("Rolename did not match a role on the server");
+        }
 
-        public static Role GetRole(object context)
+        /*public static Role GetRole(object context)
         {
             var e = context as DiscordEvent;
             if (e == null) throw new ArgumentException("Context was of unexpected type");
             var discordMember = e.Guild.GetMember(memberId).Result;
-            e.Guild.Roles.
+            e.DiscordRoles.
 
             return new Member(discordMember);
-        }
+        }*/
 
         private Role(DiscordRole discordRole)
         {

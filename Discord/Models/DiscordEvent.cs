@@ -26,7 +26,6 @@ namespace Discord.Models
             }
         }
 
-        
         public bool HasMessage { get; private set; }
         private DiscordMessage _message;
         public DiscordMessage Message
@@ -41,6 +40,34 @@ namespace Discord.Models
                 _message = value;
             }
         }
+        private DiscordChannel _channel;
+        public DiscordChannel Channel
+        {
+            get
+            {
+                if (!HasMessage) throw new ApplicationException("Illegal usage.");
+                return _channel;
+            }
+            private set
+            {
+                _channel = value;
+            }
+        }
+
+        public bool MessageIncludeRoles { get; private set; }
+        private List<DiscordRole> _discordRoles;
+        public List<DiscordRole> DiscordRoles
+        {
+            get
+            {
+                if (!MessageIncludeRoles) throw new ApplicationException("Illegal usage.");
+                return _discordRoles;
+            }
+            private set
+            {
+                _discordRoles = value;
+            }
+        }
 
         public DiscordEvent(MessageCreateEventArgs e)
         {
@@ -48,6 +75,13 @@ namespace Discord.Models
 
             HasMessage = true;
             Message = e.Message;
+
+            if (e.MentionedRoles != null)
+            {
+                MessageIncludeRoles = true;
+                DiscordRoles = e.MentionedRoles;
+            }
+            Channel = e.Channel;
         }
 
         public DiscordEvent(GuildMemberUpdateEventArgs e)

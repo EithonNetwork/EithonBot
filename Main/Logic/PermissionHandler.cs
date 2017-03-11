@@ -34,17 +34,22 @@ namespace Main.Logic
         internal static void AssignRole(Command command)
         {
             var member = command.GetParameterValue("<user>").AsMember(command.Context);
-
-            //TODO: Remake into similar as above: var roleString = discordCommand.GetRoleString(command.GetParameterValue("<role>"));
             var role = command.GetParameterValue("<role>").AsRole(command.Context);
 
-            //var role =
 
-            //member.Assignrole(role);
+            //var guild = Discord.Models.Guild.GetGuild(command.Context);
 
-            //var user = new Discord.Logic.UsersHandler(userString, discordCommand.context);
+            member.AssignRole(role);
 
+            var roles = member.Roles;
+
+            var channel = Discord.Models.Channel.GetChannel(command.Context);
+            Console.WriteLine($"User entered the following successful command: {role.ID}");
+            channel.PrintMessage("Assigned role to user");
             Console.WriteLine($"User entered the following successful command: {command.UserCommandInput}");
+
+
+
             
         }
 

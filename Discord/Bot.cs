@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DSharpPlus;
 using DSharpPlus.Voice;
 using CommandInterpreter;
+using Discord.Models;
 
 namespace Discord
 {
@@ -31,7 +32,7 @@ namespace Discord
         private async void MessageCreated(object sender, MessageCreateEventArgs e)
         {
             var discordEvent = new DiscordEvent(e);
-            _interpreter.Interpret(e.Message.Content, e);
+            _interpreter.Interpret(e.Message.Content, discordEvent);
         }
     }
 }
