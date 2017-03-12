@@ -36,15 +36,31 @@ namespace Discord.Models
         {
             var e = context as DiscordEvent;
             if (e == null) throw new ArgumentException("Context was of unexpected type");
-            var discordMember = e.Guild.GetMember(memberId).Result;
-
+            var discordMember = GetMember(memberId, e.Guild);
             return new Member(discordMember, e.Guild);
+        }
+
+        public void Refresh()
+        {
+            var discordMember = GetMember(Id, _guild);
+
+            CopyFromDiscordMember(discordMember);
+        }
+
+        private static DiscordMember GetMember(ulong memberId, DiscordGuild guild)
+        {
+            return guild.GetMember(memberId).Result;
         }
 
         private Member(DiscordMember discordMember, DiscordGuild guild)
         {
             _guild = guild;
 
+            CopyFromDiscordMember(discordMember);
+        }
+
+        private void CopyFromDiscordMember(DiscordMember discordMember)
+        {
             _member = discordMember;
             Nickname = _member.Nickname;
             Roles = _member.Roles;
@@ -52,14 +68,14 @@ namespace Discord.Models
             IsMuted = _member.IsMuted;
             IsDeafened = _member.IsDeafened;
         }
-        
+
         public void AssignRole(Role role)
         {
-            List<ulong> newRoles = _member.Roles;
-            newRoles.Add(role.ID);
+            Roles.Add(role.ID);
 
-            _guild.ModifyMember(_member.User.ID, _member.Nickname, newRoles, _member.IsMuted, _member.IsDeafened, 0);
-            Roles = newRoles;
+            _guild.ModifyMember(Id, Nickname, Roles, IsMuted, IsDeafened, 0);
+
+            Refresh();
         }
     }
 }
